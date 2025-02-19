@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +16,16 @@ use App\Http\Controllers\WelcomeController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-use App\Http\Controllers\PhotoController;
+// use App\Http\Controllers\PhotoController;
 
-Route::resource('photos', PhotoController::class);
-Route::resource('photos', PhotoController::class)->only([
-    'index', 'show'
-]);
+// Route::resource('photos', PhotoController::class);
+// Route::resource('photos', PhotoController::class)->only([
+//     'index', 'show'
+// ]);
 
-Route::resource('photos', PhotoController::class)->except([
-    'create', 'store', 'update', 'destroy'
-]);
+// Route::resource('photos', PhotoController::class)->except([
+//     'create', 'store', 'update', 'destroy'
+// ]);
 
 // use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\AboutController;
@@ -31,7 +34,7 @@ Route::resource('photos', PhotoController::class)->except([
 // Route::get('/', HomeController::class);
 // Route::get('/about', AboutController::class);
 // Route::get('/articles/{id}', ArticleController::class);
-// Route::get('/hello', [WelcomeController:: class , 'hello' ]);
+Route::get('/hello', [WelcomeController:: class , 'hello' ]);
 
 // Route::get('/world', function () {
 //     return 'World';
