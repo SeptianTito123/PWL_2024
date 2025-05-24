@@ -13,57 +13,22 @@ class PenjualanDetailSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('t_penjualan_detail')->insert([
-            // Penjualan 1
-            ['detail_id' => 1, 'penjualan_id' => 1, 'barang_id' => 1, 'harga' => 5500000, 'jumlah' => 1],
-            ['detail_id' => 2, 'penjualan_id' => 1, 'barang_id' => 3, 'harga' => 7000, 'jumlah' => 2],
-            ['detail_id' => 3, 'penjualan_id' => 1, 'barang_id' => 5, 'harga' => 75000, 'jumlah' => 1],
-        
-            // Penjualan 2
-            ['detail_id' => 4, 'penjualan_id' => 2, 'barang_id' => 2, 'harga' => 3500000, 'jumlah' => 1],
-            ['detail_id' => 5, 'penjualan_id' => 2, 'barang_id' => 4, 'harga' => 3000, 'jumlah' => 3],
-            ['detail_id' => 6, 'penjualan_id' => 2, 'barang_id' => 6, 'harga' => 120000, 'jumlah' => 2],
-        
-            // Penjualan 3
-            ['detail_id' => 7, 'penjualan_id' => 3, 'barang_id' => 7, 'harga' => 5000, 'jumlah' => 5],
-            ['detail_id' => 8, 'penjualan_id' => 3, 'barang_id' => 8, 'harga' => 15000, 'jumlah' => 2],
-            ['detail_id' => 9, 'penjualan_id' => 3, 'barang_id' => 10, 'harga' => 12000, 'jumlah' => 3],
-        
-            // Penjualan 4
-            ['detail_id' => 10, 'penjualan_id' => 4, 'barang_id' => 1, 'harga' => 5500000, 'jumlah' => 1],
-            ['detail_id' => 11, 'penjualan_id' => 4, 'barang_id' => 9, 'harga' => 20000, 'jumlah' => 1],
-            ['detail_id' => 12, 'penjualan_id' => 4, 'barang_id' => 5, 'harga' => 75000, 'jumlah' => 2],
-        
-            // Penjualan 5
-            ['detail_id' => 13, 'penjualan_id' => 5, 'barang_id' => 2, 'harga' => 3500000, 'jumlah' => 1],
-            ['detail_id' => 14, 'penjualan_id' => 5, 'barang_id' => 4, 'harga' => 3000, 'jumlah' => 2],
-            ['detail_id' => 15, 'penjualan_id' => 5, 'barang_id' => 6, 'harga' => 120000, 'jumlah' => 1],
-        
-            // Penjualan 6
-            ['detail_id' => 16, 'penjualan_id' => 6, 'barang_id' => 7, 'harga' => 5000, 'jumlah' => 4],
-            ['detail_id' => 17, 'penjualan_id' => 6, 'barang_id' => 8, 'harga' => 15000, 'jumlah' => 1],
-            ['detail_id' => 18, 'penjualan_id' => 6, 'barang_id' => 10, 'harga' => 12000, 'jumlah' => 2],
-        
-            // Penjualan 7
-            ['detail_id' => 19, 'penjualan_id' => 7, 'barang_id' => 3, 'harga' => 7000, 'jumlah' => 3],
-            ['detail_id' => 20, 'penjualan_id' => 7, 'barang_id' => 5, 'harga' => 75000, 'jumlah' => 1],
-            ['detail_id' => 21, 'penjualan_id' => 7, 'barang_id' => 9, 'harga' => 20000, 'jumlah' => 2],
-        
-            // Penjualan 8
-            ['detail_id' => 22, 'penjualan_id' => 8, 'barang_id' => 1, 'harga' => 5500000, 'jumlah' => 1],
-            ['detail_id' => 23, 'penjualan_id' => 8, 'barang_id' => 6, 'harga' => 120000, 'jumlah' => 2],
-            ['detail_id' => 24, 'penjualan_id' => 8, 'barang_id' => 10, 'harga' => 12000, 'jumlah' => 1],
-        
-            // Penjualan 9
-            ['detail_id' => 25, 'penjualan_id' => 9, 'barang_id' => 2, 'harga' => 3500000, 'jumlah' => 1],
-            ['detail_id' => 26, 'penjualan_id' => 9, 'barang_id' => 4, 'harga' => 3000, 'jumlah' => 1],
-            ['detail_id' => 27, 'penjualan_id' => 9, 'barang_id' => 7, 'harga' => 5000, 'jumlah' => 3],
-        
-            // Penjualan 10
-            ['detail_id' => 28, 'penjualan_id' => 10, 'barang_id' => 3, 'harga' => 7000, 'jumlah' => 2],
-            ['detail_id' => 29, 'penjualan_id' => 10, 'barang_id' => 8, 'harga' => 15000, 'jumlah' => 1],
-            ['detail_id' => 30, 'penjualan_id' => 10, 'barang_id' => 9, 'harga' => 20000, 'jumlah' => 2],
-        ]);
-        
+        for ($i = 1; $i <= 10; $i++) {
+            for ($i = 1; $i <= 10; $i++) { // 10 transaksi penjualan
+                for ($j = 1; $j <= 3; $j++) { // 3 barang per transaksi
+                    $barang_id = rand(1, 10); // Ambil barang secara acak
+                    $harga = DB::table('m_barang')->where('barang_id', $barang_id)->value('harga_jual');
+                    $jumlah = rand(1, 5); // Jumlah barang yang dibeli
+                    $subtotal = $harga * $jumlah; // Hitung total harga
+
+                    DB::table('t_penjualan_detail')->insert([
+                        'penjualan_id' => $i,
+                        'barang_id' => $barang_id,
+                        'harga' => $harga,
+                        'jumlah' => $jumlah,
+                    ]);
+                }
+            }
+        }
     }
 }

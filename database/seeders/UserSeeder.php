@@ -37,6 +37,7 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345'),
             ],
         ];
+
         DB::table('m_user')->insert($data);
     }
 }

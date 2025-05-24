@@ -6,26 +6,31 @@ use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
 {
-    public function hello() {
+    public function hello(){
         return 'Hello World';
     }
-    public function index()
-    {
-        return 'Selamat Datang';
+
+    public function index(){
+        $breadcrumb =(object)[
+            'title'=>'Selamat Datang',
+            'list' =>['Home','Welcome']
+        ];
+        $activemenu='dashboard';
+
+        return(view('welcome',['breadcrumb'=>$breadcrumb, 'activeMenu'=>$activemenu]));
     }
 
-    public function about()
-    {
-        return 'NIM: 2341760052';
+    public function about(){
+        return ('Septian Tito H/26');
     }
 
-    public function articles($id)
-    {
-        return 'Halaman Artikel dengan ID ' . $id;
+    public function articles($id){
+        return 'Artikel ke- '.$id;
     }
+
     public function greeting(){
         return view('blog.hello')
-            ->with('name','Tito')
-            ->with('occupation','Astronaut');
+        ->with('nama','Tito')
+        ->with('occupation','Astronaut');
     }
 }

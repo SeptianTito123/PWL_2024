@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function __invoke()
-    {
-        return 'NIM: 2341760052';
+    public function __invoke(){
+        return ('Septian Tito H/26');
     }
 }
