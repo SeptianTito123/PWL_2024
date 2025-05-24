@@ -207,6 +207,8 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
             Route::get('/{id}/show_ajax', [BarangController::class, 'show_ajax']);
             Route::put('/{id}/detail_ajax', [BarangController::class, 'detail_ajax']);
+            Route::get('/export_excel',[BarangController::class, 'export_excel']);
+            Route::get('/export_pdf',[BarangController::class, 'export_pdf']);
         });
     });
 });//artinya semua route didalam group ini harus login dulu
